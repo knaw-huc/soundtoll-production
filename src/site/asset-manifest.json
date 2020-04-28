@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.1c2134a2.chunk.css",
+    "main.js": "/static/js/main.f2333b64.chunk.js",
+    "main.js.map": "/static/js/main.f2333b64.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.088ea808.js",
+    "runtime-main.js.map": "/static/js/runtime-main.088ea808.js.map",
+    "static/css/2.9522b9fe.chunk.css": "/static/css/2.9522b9fe.chunk.css",
+    "static/js/2.930a0ca6.chunk.js": "/static/js/2.930a0ca6.chunk.js",
+    "static/js/2.930a0ca6.chunk.js.map": "/static/js/2.930a0ca6.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.ce75c2fc18538812e369198dcbb2e148.js": "/precache-manifest.ce75c2fc18538812e369198dcbb2e148.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.9522b9fe.chunk.css.map": "/static/css/2.9522b9fe.chunk.css.map",
+    "static/css/main.1c2134a2.chunk.css.map": "/static/css/main.1c2134a2.chunk.css.map",
+    "static/js/2.930a0ca6.chunk.js.LICENSE.txt": "/static/js/2.930a0ca6.chunk.js.LICENSE.txt",
+    "static/media/Logo Breed Documentconversie Mooi Werk (2).jpg": "/static/media/Logo Breed Documentconversie Mooi Werk (2).973853fa.jpg",
+    "static/media/degrotezuidwesthoek.png": "/static/media/degrotezuidwesthoek.084d2d9e.png",
+    "static/media/fa.jpg": "/static/media/fa.04aa3eae.jpg",
+    "static/media/hendrikmullerfonds.jpg": "/static/media/hendrikmullerfonds.cafe50c7.jpg",
+    "static/media/logo-blue-huygens.svg": "/static/media/logo-blue-huygens.a021c5b5.svg",
+    "static/media/logo_nwo.jpg": "/static/media/logo_nwo.a3231159.jpg",
+    "static/media/logo_rug.jpg": "/static/media/logo_rug.38c1b323.jpg",
+    "static/media/smf_logo_compact.jpg": "/static/media/smf_logo_compact.3f2f031d.jpg",
+    "static/media/statens_arkiver.jpg": "/static/media/statens_arkiver.a4a6ceb5.jpg",
+    "static/media/tresoar.jpg": "/static/media/tresoar.0ed1beda.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.088ea808.js",
+    "static/css/2.9522b9fe.chunk.css",
+    "static/js/2.930a0ca6.chunk.js",
+    "static/css/main.1c2134a2.chunk.css",
+    "static/js/main.f2333b64.chunk.js"
+  ]
+}
