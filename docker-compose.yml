@@ -20,7 +20,7 @@ services:
       - /data/docker/volumes/sont_data/:/usr/share/elasticsearch/data
 
   sont_db:
-    image: mysql:5.6
+    image: mysql:5.7
     container_name: soundtoll_mysql
     restart: always
     environment:
