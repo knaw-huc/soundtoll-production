@@ -16,8 +16,7 @@ services:
       - 9200
     networks:
       - sont_network
-    volumes:
-      - /data/docker/volumes/sont_data/:/usr/share/elasticsearch/data
+    
 
   sont_db:
     image: mysql:5.7
