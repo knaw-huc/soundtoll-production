@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'https://soundtoll.sd.di.huc.knaw.nl');
+define('BASE_URL', 'http://localhost:8080');
 define('APPPATH', dirname(__FILE__));
 define("PAGE_LENGTH", 20);
 define ("BROWSE_PAGE_LENGTH", 500);
