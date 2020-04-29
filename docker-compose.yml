@@ -44,6 +44,9 @@ services:
     container_name: soundtoll_application
     restart: always
     environment:
+      - PMA_HOST=sont_db
+      - PMA_PORT=3306
+      - PMA_ARBITRARY=1
       - VIRTUAL_HOST=soundtoll.sd.di.huc.knaw.nl
     links:
       - elastic
