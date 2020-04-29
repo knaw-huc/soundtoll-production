@@ -7,7 +7,7 @@ class db
 
     function __construct()
     {
-        $this->con = new mysqli(DB_SERVER, DB_USER, DB_PASSWD, DB_NAME);
+        $this->con = new mysqli(DB_SERVER, DB_USER, DB_PASSWD, DB_NAME, 3306);
     }
 
     function films()

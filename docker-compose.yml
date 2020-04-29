@@ -23,6 +23,8 @@ services:
     image: mysql:5.7
     container_name: soundtoll_mysql
     restart: always
+    expose:
+      - 3306
     environment:
       MYSQL_USER: user
       MYSQL_PASSWORD: user
@@ -30,6 +32,8 @@ services:
       MYSQL_DATABASE: default_schema
     volumes:
       - /data/docker/volumes/sont_db/_data/mysql:/var/lib/mysql
+    ports:
+      - 3306:3306
     networks:
       - sont_network
 
