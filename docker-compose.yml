@@ -31,7 +31,6 @@ services:
       MYSQL_PASSWORD: user
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: default_schema
-      VIRTUAL_PORT: 3306
     volumes:
       - /data/docker/volumes/sont_db/_data/mysql:/var/lib/mysql
     ports:
