@@ -4,6 +4,9 @@ networks:
   sont_network:
     external:
       name: nginxproxynetwork
+  soundtoll:
+    external:
+      name: soundtoll_default
 
 services:
   elastic:
@@ -31,12 +34,13 @@ services:
       MYSQL_PASSWORD: user
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: default_schema
+      VIRTUAL_PORT: 3306
     volumes:
       - /data/docker/volumes/sont_db/_data/mysql:/var/lib/mysql
     ports:
       - 3306:3306
     networks:
-      - sont_network
+      - soundtoll
 
   sont:
     build:
@@ -53,3 +57,4 @@ services:
       - 8080:80
     networks:
       - sont_network
+      - soundtoll
