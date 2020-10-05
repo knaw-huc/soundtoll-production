@@ -21,6 +21,7 @@ services:
       - sont_network
     volumes:
       - /data/docker/volumes/sont_data/_data:/usr/share/elasticsearch/data
+      - /home/robz:/home
 
   sont_mysql:
     image: mysql:5.7
@@ -37,6 +38,7 @@ services:
       VIRTUAL_PORT: 3306
     volumes:
       - /data/docker/volumes/sont_db/_data/mysql:/var/lib/mysql
+      - /home/robz:/home
     ports:
       - 3306:3306
     networks:
@@ -53,6 +55,8 @@ services:
     links:
       - elastic
       - sont_mysql
+    volumes:
+      - /home/robz:/home
     ports:
       - 8080:80
     networks:

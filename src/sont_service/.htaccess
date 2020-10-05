@@ -1,5 +1,5 @@
 RewriteEngine On
-#RewriteBase /sont_service/
+#RewriteBase /timpars/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

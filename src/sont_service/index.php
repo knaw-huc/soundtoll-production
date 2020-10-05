@@ -45,6 +45,27 @@ switch ($page) {
             throw_error();
         }
         break;
+    case "commodities":
+        if (isset($segments[3])) {
+            commodities($segments[3]);
+        } else {
+            throw_error("Too little parameters");
+        }
+        break;
+    case "chrnames":
+        if (isset($segments[3])) {
+            chr_names($segments[3]);
+        } else {
+            throw_error("Too little parameters");
+        }
+        break;
+    case "patronyms":
+        if (isset($segments[3])) {
+            patronyms($segments[3]);
+        } else {
+            throw_error("Too little parameters");
+        }
+        break;
     case "hist_places":
         if (isset($segments[3]) && isset($segments[4])) {
             if (!is_numeric($segments[4]) || $segments[4] <= 0) {
@@ -90,7 +111,7 @@ switch ($page) {
                     if (isset($segments[4]) && isset($segments[5]) && isset($segments[6])) {
                         get_facets($segments[4], $segments[6], $segments[5]);
                     } else {
-                        throw_error($segments[4]);
+                        throw_error();
                     }
                     break;
                 case "nested_facet":
@@ -124,6 +145,6 @@ switch ($page) {
         }
         break;
     default:
-        throw_error("No shit");
+        throw_error();
         break;
 }

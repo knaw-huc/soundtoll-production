@@ -7,7 +7,7 @@ class db
 
     function __construct()
     {
-        $this->con = new mysqli(DB_SERVER, DB_USER, DB_PASSWD, DB_NAME, 3306);
+        $this->con = new mysqli(DB_SERVER, DB_USER, DB_PASSWD, DB_NAME);
     }
 
     function films()
@@ -42,14 +42,22 @@ class db
     function shipmasters($letter, $page) {
         $offset = $page - 1;
         $offset = $offset * BROWSE_PAGE_LENGTH;
-        try {
-            $results = $this->ass_arr($this->con->query("SELECT achternaam, volledige_naam FROM shipmasters WHERE letter= '$letter' ORDER BY achternaam, volledige_naam LIMIT $offset, " . BROWSE_PAGE_LENGTH));
-        }
-        catch (Exception $e) {
-            die($e->getMessage());
-        }
+        //$results = $this->ass_arr($this->con->query("SELECT achternaam, volledige_naam FROM shipmasters WHERE letter= '$letter' ORDER BY achternaam, volledige_naam LIMIT $offset, " . BROWSE_PAGE_LENGTH));
+        $results = $this->ass_arr($this->con->query("SELECT achternaam, volledige_naam FROM shipmasters WHERE letter= '$letter' ORDER BY achternaam, volledige_naam "));
         //$results = $this->ass_arr($this->con->query("SELECT achternaam, volledige_naam FROM shipmasters WHERE achternaam = 'Hall' ORDER BY achternaam LIMIT $offset, " . PAGE_LENGTH));
         $results["data"] = array("itemList" => $results["data"], "page" => $page, "number_of_pages" => $this->pagesShipmasters($letter));
+        return $results;
+    }
+
+    function patronyms($letter) {
+        $results = $this->ass_arr($this->con->query("SELECT patroniem FROM patroniemen WHERE letter= '$letter' ORDER BY patroniem "));
+        $results["data"] = array("itemList" => $results["data"], "page" => 1, "number_of_pages" => 1);
+        return $results;
+    }
+
+    function chr_names($letter) {
+        $results = $this->ass_arr($this->con->query("SELECT voornaam FROM voornamen WHERE letter= '$letter' ORDER BY voornaam "));
+        $results["data"] = array("itemList" => $results["data"], "page" => 1, "number_of_pages" => 1);
         return $results;
     }
 
@@ -61,8 +69,15 @@ class db
     function places($letter, $page) {
         $offset = $page - 1;
         $offset = $offset * BROWSE_PAGE_LENGTH;
-        $results = $this->ass_arr($this->con->query("SELECT Modern_name AS name FROM places_standard WHERE letter= '$letter' ORDER BY Modern_name LIMIT $offset, " . BROWSE_PAGE_LENGTH));
+        //$results = $this->ass_arr($this->con->query("SELECT Modern_name AS name FROM places_standard WHERE letter= '$letter' ORDER BY Modern_name LIMIT $offset, " . BROWSE_PAGE_LENGTH));
+        $results = $this->ass_arr($this->con->query("SELECT Modern_name AS name FROM places_standard WHERE letter= '$letter' ORDER BY Modern_name"));
         $results["data"] = array("itemList" => $results["data"], "page" => $page, "number_of_pages" => $this->pagesPlaces($letter));
+        return $results;
+    }
+
+    function commodities($letter) {
+        $results = $this->ass_arr($this->con->query("SELECT commodity AS name FROM commodities WHERE letter= '$letter' ORDER BY commodity"));
+        $results["data"] = array("itemList" => $results["data"], "page" => 1, "number_of_pages" => 1);
         return $results;
     }
 
@@ -74,7 +89,8 @@ class db
     function hist_places($letter, $page) {
         $offset = $page - 1;
         $offset = $offset * BROWSE_PAGE_LENGTH;
-        $results = $this->ass_arr($this->con->query("SELECT place AS name FROM places_source WHERE letter= '$letter' ORDER BY place LIMIT $offset, " . BROWSE_PAGE_LENGTH));
+        //$results = $this->ass_arr($this->con->query("SELECT place AS name FROM places_source WHERE letter= '$letter' ORDER BY place LIMIT $offset, " . BROWSE_PAGE_LENGTH));
+        $results = $this->ass_arr($this->con->query("SELECT place AS name FROM places_source WHERE letter= '$letter' ORDER BY place"));
         $results["data"] = array("itemList" => $results["data"], "page" => $page, "number_of_pages" => $this->hist_pagesPlaces($letter));
         return $results;
     }
@@ -92,7 +108,7 @@ class db
 
     function passage($id)
     {
-        $retArr = $this->ass_arr($this->con->query("SELECT `id_doorvaart`, `volgnummer`, `schipper_voornamen`, `schipper_patroniem`, `schipper_tussenvoegsel`, `schipper_achternaam`, `schipper_plaatsnaam`, `tmp` as schipper_naam, CONCAT(dag, '-', maand, '-', jaar) AS datum, tonnage FROM doorvaarten WHERE id_doorvaart = $id"));
+        $retArr = $this->ass_arr($this->con->query("SELECT `id_doorvaart`, `volgnummer`, `schipper_voornamen`, `schipper_patroniem`, `schipper_tussenvoegsel`, `schipper_achternaam`, `schipper_plaatsnaam`, `tmp` as schipper_naam, CONCAT(dag, '-', maand, '-', jaar) AS datum,`soort_korting`, `korting_muntsoort1`, `korting_bedrag1`, `korting_muntsoort2`, `korting_bedrag2`, `korting_muntsoort3`, `korting_bedrag3`, `subtotaal1_muntsoort1`, `subtotaal1_bedrag1`, `subtotaal1_muntsoort2`, `subtotaal1_bedrag2`, `subtotaal1_muntsoort3`, `subtotaal1_bedrag3`, `subtotaal2_muntsoort1`, `subtotaal2_bedrag1`, `subtotaal2_muntsoort2`, `subtotaal2_bedrag2`, `subtotaal2_muntsoort3`, `subtotaal2_bedrag3`, `totaal_muntsoort1`, `totaal_bedrag1`, `totaal_muntsoort2`, `totaal_bedrag2`, `totaal_muntsoort3`, `totaal_bedrag3`, `totaal_muntsoort4`, `totaal_bedrag4`, `totaal_muntsoort5`, `totaal_bedrag5`, jaar, tonnage FROM doorvaarten WHERE id_doorvaart = $id"));
         $retArr["data"][0]["cargo"] = $this->getCargos($id);
         $retArr["data"][0]["tax"] = $this->getTaxes($id);
         $retArr["data"][0]["scans"] = $this->getScans($id);
@@ -142,7 +158,12 @@ class db
     private function getRegister($name)
     {
         $results = $this->ass_arr($this->con->query("SELECT r.titel FROM `scans_totaal` as s, registers_totaal as r WHERE s.bnaam = '$name' AND s.registernr = r.registernr"));
-        return $results["data"][0]["titel"];
+        if (isset($results["data"][0]["titel"])) {
+            return $results["data"][0]["titel"];
+        } else {
+            return "";
+        }
+
     }
 
     private function getTaxes($id)
