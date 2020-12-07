@@ -20,7 +20,7 @@ services:
     networks:
       - sont_network
     volumes:
-      - /data/docker/volumes/sont_data/_data:/usr/share/elasticsearch/data
+      - /data/docker/volumes/sont_es/_data:/usr/share/elasticsearch/data
       - /home/robz:/home
 
   sont_mysql:
