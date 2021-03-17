@@ -3,6 +3,7 @@ MAINTAINER Rob Zeeman <rob.zeeman@di.huc.knaw.nl>
 EXPOSE 80 443
 COPY --chown=www-data:www-data  ./src/site/* /var/www/html/
 COPY --chown=www-data:www-data  ./src/site/static/ /var/www/html/static/
+COPY --chown=www-data:www-data  ./src/site/pdf/ /var/www/html/pdf/
 COPY --chown=www-data:www-data  ./src/sont_service/ /var/www/html/sont_service/
 
 RUN apt-get update \
