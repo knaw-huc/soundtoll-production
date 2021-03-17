@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/static/css/main.f1823f6a.chunk.css",
-    "main.js": "/static/js/main.e6b9b943.chunk.js",
-    "main.js.map": "/static/js/main.e6b9b943.chunk.js.map",
+    "main.css": "/static/css/main.e4de3e45.chunk.css",
+    "main.js": "/static/js/main.64033465.chunk.js",
+    "main.js.map": "/static/js/main.64033465.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.088ea808.js",
     "runtime-main.js.map": "/static/js/runtime-main.088ea808.js.map",
     "static/css/2.9522b9fe.chunk.css": "/static/css/2.9522b9fe.chunk.css",
-    "static/js/2.6099e1a0.chunk.js": "/static/js/2.6099e1a0.chunk.js",
-    "static/js/2.6099e1a0.chunk.js.map": "/static/js/2.6099e1a0.chunk.js.map",
+    "static/js/2.91419b6a.chunk.js": "/static/js/2.91419b6a.chunk.js",
+    "static/js/2.91419b6a.chunk.js.map": "/static/js/2.91419b6a.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.d950f05c856e46e04a0e9846b18a38c1.js": "/precache-manifest.d950f05c856e46e04a0e9846b18a38c1.js",
+    "precache-manifest.820443f9a77ec67b47af90ea7ff96702.js": "/precache-manifest.820443f9a77ec67b47af90ea7ff96702.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.9522b9fe.chunk.css.map": "/static/css/2.9522b9fe.chunk.css.map",
-    "static/css/main.f1823f6a.chunk.css.map": "/static/css/main.f1823f6a.chunk.css.map",
-    "static/js/2.6099e1a0.chunk.js.LICENSE.txt": "/static/js/2.6099e1a0.chunk.js.LICENSE.txt",
+    "static/css/main.e4de3e45.chunk.css.map": "/static/css/main.e4de3e45.chunk.css.map",
+    "static/js/2.91419b6a.chunk.js.LICENSE.txt": "/static/js/2.91419b6a.chunk.js.LICENSE.txt",
     "static/media/Logo Breed Documentconversie Mooi Werk (2).jpg": "/static/media/Logo Breed Documentconversie Mooi Werk (2).973853fa.jpg",
     "static/media/degrotezuidwesthoek.png": "/static/media/degrotezuidwesthoek.084d2d9e.png",
-    "static/media/fa.jpg": "/static/media/fa.04aa3eae.jpg",
     "static/media/hendrikmullerfonds.jpg": "/static/media/hendrikmullerfonds.cafe50c7.jpg",
+    "static/media/koftegel.jpg": "/static/media/koftegel.c19c78e9.jpg",
     "static/media/logo-blue-huygens.svg": "/static/media/logo-blue-huygens.a021c5b5.svg",
     "static/media/logo_nwo.jpg": "/static/media/logo_nwo.a3231159.jpg",
     "static/media/logo_rug.jpg": "/static/media/logo_rug.38c1b323.jpg",
@@ -28,8 +28,8 @@
   "entrypoints": [
     "static/js/runtime-main.088ea808.js",
     "static/css/2.9522b9fe.chunk.css",
-    "static/js/2.6099e1a0.chunk.js",
-    "static/css/main.f1823f6a.chunk.css",
-    "static/js/main.e6b9b943.chunk.js"
+    "static/js/2.91419b6a.chunk.js",
+    "static/css/main.e4de3e45.chunk.css",
+    "static/js/main.64033465.chunk.js"
   ]
 }

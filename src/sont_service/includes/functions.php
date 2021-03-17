@@ -47,15 +47,15 @@ function patronyms($letter) {
     send_json($db->patronyms($letter));
 }
 
-function places($letter, $page) {
+function places($letter, $port) {
     global $db;
 
-    send_json($db->places($letter, $page));
+    send_json($db->places($letter, $port));
 }
 
-function hist_places($letter, $page) {
+function hist_places($letter, $port) {
     global $db;
-    send_json($db->hist_places($letter, $page));
+    send_json($db->hist_places($letter, $port));
 }
 
 function commodities($letter) {
@@ -65,12 +65,11 @@ function commodities($letter) {
 
 function elastic($json_struc) {
     $options = array('Content-type: application/json', 'Content-Length: ' . strlen($json_struc));
-    error_log($json_struc);
+    //error_log($json_struc);
     $ch = curl_init(ELASTIC_HOST);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $options);
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_POSTFIELDS, $json_struc);
-    //curl_setopt($ch, CURLOPT_VERBOSE, 1);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $response = curl_exec($ch);
     curl_close($ch);
@@ -111,7 +110,7 @@ function parse_codedStruc($codedStruc) {
     $sortField = $sortElements[0];
     $sortAscDesc = $sortElements[1];
     if ($queryArray["searchvalues"] == "none") {
-        $json_struc = "{ \"query\": {\"match_all\": {}}, \"size\": 100, \"from\": $from, \"_source\": [\"id_doorvaart\", \"type\", \"schipper_achternaam\", \"schipper_naam\", \"dag\", \"maand\", \"jaar\", \"schipper_plaatsnaam\", \"van_eerste\", \"naar_eerste\"], \"sort\": [{ \"$sortField\": {\"order\":\"$sortAscDesc\"}}]}";
+        $json_struc = "{ \"query\": {\"match_all\": {}}, \"size\": 100, \"from\": $from, \"_source\": [\"id_doorvaart\", \"type\", \"schipper_achternaam\", \"schipper_naam\", \"schipper_patroniem\" , \"dag\", \"maand\", \"jaar\", \"schipper_plaatsnaam\", \"van_eerste\", \"naar_eerste\"], \"sort\": [{ \"$sortField\": {\"order\":\"$sortAscDesc\"}}]}";
     } else {
         $json_struc = buildQuery($queryArray, $from, $sortOrder);
     }
@@ -165,7 +164,7 @@ function queryTemplate($terms, $from, $sortOrder) {
     $sortElements = explode(";", $sortOrder);
     $sortField = $sortElements[0];
     $sortAscDesc = $sortElements[1];
-    return "{ \"query\": { \"bool\": { \"must\": [ $terms ] } }, \"size\": 100, \"from\": $from, \"_source\": [\"id_doorvaart\", \"type\", \"schipper_achternaam\", \"schipper_naam\", \"dag\",\"maand\",\"jaar\", \"schipper_plaatsnaam\", \"van_eerste\", \"naar_eerste\"], \"sort\": [ { \"$sortField\": {\"order\":\"$sortAscDesc\"}} ] }";
+    return "{ \"query\": { \"bool\": { \"must\": [ $terms ] } }, \"size\": 100, \"from\": $from, \"_source\": [\"id_doorvaart\", \"type\", \"schipper_achternaam\", \"schipper_naam\", \"schipper_patroniem\" ,\"dag\",\"maand\",\"jaar\", \"schipper_plaatsnaam\", \"van_eerste\", \"naar_eerste\"], \"sort\": [ { \"$sortField\": {\"order\":\"$sortAscDesc\"}} ] }";
 }
 
 function makeItems($termArray) {
