@@ -91,7 +91,7 @@ function get_regions($size = "big") {
 function search($codedStruc) {
     $json_struc = parse_codedStruc($codedStruc);
     $send_back = array();
-    error_log($json_struc);
+    //error_log($json_struc);
     $result = elastic($json_struc);
     $send_back["amount"] = $result["hits"]["total"]["value"];
     $send_back["pages"] = ceil($result["hits"]["total"]["value"] / PAGE_LENGTH);
@@ -136,7 +136,8 @@ function buildQuery($queryArray, $from, $sortOrder) {
 function matchTemplate($term, $value) {
     switch ($term) {
         case "FREE_TEXT":
-            return "{\"multi_match\": {\"query\": \"$value\"}}";
+            //return "{\"multi_match\": {\"query\": \"$value\"}}";
+            return "{\"wildcard\": {\"fulltext\": {\"value\": \"$value\"}}}";
         case "PERIOD":
             return yearValues($value);
         case "jaar":
